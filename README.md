@@ -17,8 +17,8 @@ An offline-first flashcard application built with React, FastAPI, and PostgreSQL
 - [x] React Router
 - [x] Sidebar Navigation
 - [x] Top Navigation Bar
-- [ ] MobileNav
-- [ ] Polish the responsive spacing and interactions.
+- [x] MobileNav
+- [x] Polish the responsive spacing and interactions.
 
 
 ---

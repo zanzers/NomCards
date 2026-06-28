@@ -11,7 +11,7 @@ function SideBar() {
   return (
     <aside  className={`${
       collapsed ? "w-20" : "w-64"
-    } bg-(--surface) transition-all duration-300`}>
+    } transition-all duration-300`}>
 
         <div className="h-16 flex items-center px-6 justify-between">
           

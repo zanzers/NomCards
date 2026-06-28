@@ -14,7 +14,7 @@ function Topbar() {
   );
 
   return (
-    <header className="flex h-16 items-center justify-between  bg-(--surface) px-6">
+    <header className="flex h-14 items-center justify-between  bg-(--surface) px-6 lg:h-16">
 
       {/* Left */}
       <h1 className="text-xl font-semibold text-(--text-primary)">

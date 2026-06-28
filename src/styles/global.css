@@ -39,3 +39,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+:root{
+  --transition-fast: 150ms ease;
+  --transition: 250ms ease;
+  --transition-slow: 400ms ease;
+}

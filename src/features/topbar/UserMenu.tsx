@@ -6,7 +6,7 @@ function UserMenu() {
   return (
     <div className="relative group z-50">
 
-      <button className="flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-(--border-hover)">
+      <button className="flex items-center gap-2 rounded-lg px-3 py-2 transition hover:bg-(--primary-hover)">
         <CircleUserRound className="h-5 w-5"/>
         <span className="hidden sm:block">
             Guest
@@ -16,7 +16,7 @@ function UserMenu() {
     </button>
 
     <div className="absolute right-0 mt-2 w-56 rounded-xl  border-(--border) shadow-lg opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
-      <div className=" boder-(--border) px-4 py-3">
+      <div className="border-b boder-(--border) px-4 py-3">
         <p className="font-medium text-(--text-primary)">
           Guest
         </p>

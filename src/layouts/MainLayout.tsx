@@ -11,14 +11,14 @@ function MainLayout() {
   return (
     <div className="flex min-h-screen">
 
-      <div className="hidden lg:block">
+      <div className="hidden lg:block bg-(--surface)">
         <SideBar />
       </div>
 
       <div className="flex flex-1 flex-col">
         <Topbar />
 
-        <main className="flex-1 overflow-y-auto p-6 pb-24 lg:pb-6">
+        <main className="flex-1 overflow-y-auto p-6 sm:p-5 pb-24 lg:pb-6">
           <Outlet />
         </main>
 
