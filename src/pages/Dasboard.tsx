@@ -1,7 +1,12 @@
+import DashboardHeader from "../components/dashboard/DashboardHeader";
+import RecentSection from "../components/dashboard/RecentSection";
+
 function Dashboard() {
   return (
-    <div className="bg-red-500 text-white p-10">
-      Dashboard
+    <div className="space-y-8">
+      <DashboardHeader />
+      <RecentSection />
+  
     </div>
   );
 }
