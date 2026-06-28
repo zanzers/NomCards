@@ -1,7 +1,7 @@
 function SettingsPage() {
   return (
     <div>
-      
+      SettingsPage
     </div>
   )
 }

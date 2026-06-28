@@ -91,11 +91,13 @@ An offline-first flashcard application built with React, FastAPI, and PostgreSQL
 - [x] System Architecture
 - [x] React + TypeScript Project
 - [x] Theme System
-- [ ] Main Layout
-- [ ] React Router
-- [ ] Sidebar Navigation
-- [ ] Top Navigation Bar
-- [ ] Light / Dark Mode Toggle
+- [x] Main Layout
+- [x] React Router
+- [x] Sidebar Navigation
+- [x] Top Navigation Bar
+- [ ] MobileNav
+- [ ] Polish the responsive spacing and interactions.
+
 
 ---
 
@@ -180,3 +182,18 @@ An offline-first flashcard application built with React, FastAPI, and PostgreSQL
 - [ ] Deploy Frontend
 - [ ] Deploy Backend
 - [ ] Release v1.0
+
+
+
+
+
+
+
+
+
+Here's the order I'd follow
+✅ Finish the User Menu dropdown.
+✅ Make the layout responsive (lg:hidden, hidden lg:block).
+✅ Build the MobileNav using your existing navigation.ts.
+✅ Polish the responsive spacing and interactions.
+🚀 Start building the Dashboard.
