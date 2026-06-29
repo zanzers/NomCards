@@ -2,13 +2,14 @@ import { useState } from "react";
 
 interface FlashcardProps{
   question: string;
+  number: number
   current: number;
   total: number;
   answer: string;
   onNext: (status: "correct" | "incorrect" | "skipped") => void;
 }
 
-function Flashcard({ question, current, total, answer, onNext } : FlashcardProps ) {
+function Flashcard({ question, current, total, answer, onNext, number } : FlashcardProps ) {
   const [userAnswer, setUserAnswer ] = useState("");
   const [showAnswer, setShowAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -41,7 +42,7 @@ function Flashcard({ question, current, total, answer, onNext } : FlashcardProps
         <div className="absolute inset-0 backface-hidden rounded-2xl border bg-card p-8">
           
           <p className="mb-2 text-sm text-muted-foreground">
-            Question {current} of {total}
+            Question {number}
           </p>
 
           <h2 className="text-2xl font-semibold">

@@ -1,52 +1,64 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { getDecks } from "../lib/localStorage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import Flashcard from "../components/study/Flashcard";
 
 
-
 function StudySessionPage() {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const { deckId } = useParams();
-    const [result, setResult] = useState<{
-        questionId: number;
-        status: "correct" | "incorrect" | "skipped";
-    }[]>([]);
-
     const navigate = useNavigate();
+
+
+
+    const [result, setResult] = useState<{ questionId: number; status: "correct" | "incorrect" | "skipped";}[]>([]);
     
     const deck = getDecks().find(
         (deck: { id: number; }) => deck.id === Number(deckId)
     );
-    const currentQuestion = deck.questions[currentIndex];
     
-    if(!deck){
-        return (
-            <div className="p-6">
-                Deck not found.
-            </div>
-        )
-    }
+    if(!deck){return (<div className="p-6"> Deck not found.</div>)}
+    
+    const [studyQueue, setStudyQueue] = useState(deck.questions);
+    const currentQuestion = studyQueue[0];
+    const questionNumber = deck.questions.findIndex((q: { id: any; }) => q.id === currentQuestion.id) + 1;
+    
 
 
-    function handleNext(status: "correct" | "incorrect" | "skipped"){
 
-        setResult((prev) => [
-            ...prev,
+    function handleNext(status: "correct" | "incorrect" | "skipped") {
+
+        const newResults = [
+            ...result,
             {
                 questionId: currentQuestion.id,
                 status,
             },
-        ]);
+        ];
 
-        if(currentIndex < deck.questions.length -1){
-            setCurrentIndex((prev) => prev + 1);
+        setResult(newResults);
+
+        if (status === "skipped") {
+            setStudyQueue((prev: string | any[]) => [
+                ...prev.slice(1),
+                prev[0],
+            ]);
         } else {
-            
+            const nextQueue = studyQueue.slice(1);
+
+            setStudyQueue(nextQueue);
+
+            if (nextQueue.length === 0) {
+                navigate("/study-results", {
+                    state: {
+                        deck,
+                        results: newResults,
+                    },
+                });
+            }
         }
     }
-
+    
 
 
   return (
@@ -54,7 +66,7 @@ function StudySessionPage() {
 
      <div className="flex items-center mb-8">
         <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
             className="rounded-md border p-2 transition hover:bg-muted"
         >
             <ArrowLeft className="h-5 w-5" />
@@ -65,12 +77,10 @@ function StudySessionPage() {
                 {deck.subject}
             </h1>
 
-            <p className="mt-2 mb-2 text-sm text-muted-foreground">
-                Question {currentIndex + 1} / {deck.questions.length}
-            </p>
             <Flashcard 
                 key={currentQuestion.id}
-                current={currentIndex + 1} 
+                number={questionNumber}
+                current={deck.questions.length - studyQueue.length + 1} 
                 onNext={handleNext}
                 total={deck.questions.length} 
                 answer ={currentQuestion.answer}

@@ -8,6 +8,7 @@ import StatisticsPage from "../pages/StatisticsPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import CreateDecksPage from "../pages/CreateDecksPage";
 import StudySessionPage from "../pages/StudySessionPage";
+import StudyResultPage from "../pages/StudyResultPage";
 
 
 export default function AppRoutes(){
@@ -25,6 +26,7 @@ export default function AppRoutes(){
             </Route>
                 <Route path="/createNew" element={<CreateDecksPage />} />
                 <Route path="/studys/:deckId" element={<StudySessionPage />} />
+                <Route path="/study-results" element={<StudyResultPage />} />
                 <Route path="*" element={<NotFoundPage />} />
         </Routes>
     );
