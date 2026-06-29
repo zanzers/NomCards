@@ -25,7 +25,7 @@ An offline-first flashcard application built with React, FastAPI, and PostgreSQL
 
 # 📚 Milestone 2 - Deck Management
 
-- [ ] Create Deck
+- [x] Create Deck
 - [ ] Edit Deck
 - [ ] Delete Deck
 - [ ] View Deck List

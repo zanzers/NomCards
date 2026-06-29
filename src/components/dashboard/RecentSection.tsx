@@ -1,8 +1,21 @@
 import { MoreHorizontal } from "lucide-react";
 import RecentCard from "./RecentCard";
+import RecentMenu from "./RecentMenu";
+import { getDecks } from "../../lib/localStorage";
+import type { Deck, Question } from "../../types/deck";
+import { useEffect, useState } from "react";
+
 
 
 function RecentSection() {
+
+    const [decks, setDecks] = useState<Deck[]>([]);
+    
+    useEffect(() => {
+        setDecks(getDecks());
+    }, []);
+
+
   return (
     <section className="space-y-4">
 
@@ -14,18 +27,27 @@ function RecentSection() {
         
 
         <button className="text-sm text-muted-foreground transition hover:text-foreground">
-            <MoreHorizontal className="h-5 w-5" />
+            <RecentMenu />
 
         </button>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto pb-2">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
             <RecentCard isCreate title="" subtitle="" />
-            <RecentCard  title="Biology" subtitle="20 cards  • Yesterday " />
-            <RecentCard  title="Japanese" subtitle="35 cards  • 2 days ago " />
-            <RecentCard  title="Networking" subtitle="18 cards  • last week " />
-            
+
+            {decks.map((deck) => {
+                console.log(deck);
+
+                return (
+                    <RecentCard
+                        deck={deck}
+                        key={deck.id}
+                        title={deck.subject}
+                        subtitle={`${deck.questions.length} Questions`}
+                    />
+                );
+            })}
         </div>
 
 
